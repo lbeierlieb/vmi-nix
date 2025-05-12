@@ -33,9 +33,9 @@
         let
           old-pkgs = import inputs.nixpkgs-24-05 { inherit system; };
           old-libvirt = old-pkgs.libvirt;
-          bext-di = pkgs.callPackage ./nix/build_bext-di.nix { source = inputs.bext-di; };
-          yara-cmake = pkgs.callPackage ./nix/build_yara-cmake.nix { };
-          libvmi-gdata = pkgs.callPackage ./nix/build_libvmi-gdata.nix {
+          bext-di = pkgs.callPackage ./smartvmi/build_bext-di.nix { source = inputs.bext-di; };
+          yara-cmake = pkgs.callPackage ./smartvmi/build_yara-cmake.nix { };
+          libvmi-gdata = pkgs.callPackage ./smartvmi/build_libvmi-gdata.nix {
             source = inputs.libvmi-gdata;
             # libvirt version has to match the version of the libvirt running the VM
             libvirt = old-libvirt;
@@ -46,12 +46,12 @@
           formatter = pkgs.nixfmt-rfc-style;
           packages =
             let
-              vmicore = pkgs.callPackage ./nix/build_vmicore.nix {
+              vmicore = pkgs.callPackage ./smartvmi/build_vmicore.nix {
                 inherit bext-di;
                 craneLib = inputs.crane.mkLib pkgs;
                 libvmi = libvmi-gdata;
               };
-              plugins = import ./nix/build_plugins.nix {
+              plugins = import ./smartvmi/build_plugins.nix {
                 inherit pkgs yara-cmake;
               };
             in
