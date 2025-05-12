@@ -17,6 +17,10 @@
       url = "github:GDATASoftwareAG/libvmi?rev=224b204db82f8648bdd475f2b8a48aa4de143c97";
       flake = false;
     };
+    smartvmi = {
+      url = "github:lbeierlieb/smartvmi?rev=30f3c7e895556c547b864ca271646b2c767621e9";
+      flake = false;
+    };
   };
 
   outputs =
@@ -50,9 +54,11 @@
                 inherit bext-di;
                 craneLib = inputs.crane.mkLib pkgs;
                 libvmi = libvmi-gdata;
+                smartvmi-source = inputs.smartvmi;
               };
               plugins = import ./smartvmi/build_plugins.nix {
                 inherit pkgs yara-cmake;
+                smartvmi-source = inputs.smartvmi;
               };
             in
             {

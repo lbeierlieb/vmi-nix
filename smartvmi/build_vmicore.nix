@@ -25,15 +25,17 @@
   callPackage
 , nix-gitignore
 , stdenv
+, # source
+  smartvmi-source
 }:
 
 let
-  libRustGrpcServer = callPackage ./build_vmicore_rust-grpc-server.nix { inherit craneLib; };
+  libRustGrpcServer = callPackage ./build_vmicore_rust-grpc-server.nix { inherit craneLib smartvmi-source; };
   cxxbridge-cmd = callPackage ./build_cxxbridge-cmd.nix { rustLib = libRustGrpcServer; };
 in
 stdenv.mkDerivation {
   name = "vmicore";
-  src = nix-gitignore.gitignoreSource [ ] ../vmicore;
+  src = nix-gitignore.gitignoreSource [ ] smartvmi-source + "/vmicore";
 
   # Prevent any online access.
   CARGO_NET_OFFLINE = "true";

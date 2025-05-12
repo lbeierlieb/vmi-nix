@@ -4,11 +4,13 @@
 , protobuf
 , # helpers
   nix-gitignore
+, # source
+  smartvmi-source
 }:
 
 let
   commonArgs = {
-    src = nix-gitignore.gitignoreSource [ ] ../vmicore/rust_src;
+    src = nix-gitignore.gitignoreSource [ ] smartvmi-source + "/vmicore/rust_src";
     nativeBuildInputs = [ protobuf ];
   };
 

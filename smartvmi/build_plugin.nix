@@ -12,10 +12,12 @@
 , # helpers
   nix-gitignore
 , stdenv
+, # source
+  smartvmi-source
 }:
 let
-  pluginSrc = nix-gitignore.gitignoreSource [ ] ../plugins/${name};
-  vmicoreSrc = nix-gitignore.gitignoreSource [ ] ../vmicore;
+  pluginSrc = nix-gitignore.gitignoreSource [ ] (smartvmi-source + "/plugins/${name}");
+  vmicoreSrc = nix-gitignore.gitignoreSource [ ] (smartvmi-source + "/vmicore");
 in
 stdenv.mkDerivation {
   name = "smartvmi-plugin-${name}";
