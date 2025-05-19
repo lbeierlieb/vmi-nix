@@ -5,6 +5,7 @@
 , # deps
   cmake
 , fmt
+, gtest
 , jsoncpp
 , pkg-config
 , tclap
@@ -37,6 +38,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     cmake
+    gtest
     pkg-config
   ];
 }

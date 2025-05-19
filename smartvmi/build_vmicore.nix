@@ -9,6 +9,7 @@
 , fuse
 , fmt
 , glib
+, gtest
 , json_c
 , libkvmi
 , libvirt
@@ -63,6 +64,7 @@ stdenv.mkDerivation {
       corrosion
       cxxbridge-cmd # for corrosion
       flex
+      gtest
       pkg-config
       rustc
     ]
