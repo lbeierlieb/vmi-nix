@@ -116,17 +116,17 @@
     "smartvmi": {
       "flake": false,
       "locked": {
-        "lastModified": 1747047869,
-        "narHash": "sha256-fhUdRj79vKtXb7dYFQUTWbCfcEgrxRFZK5OT8q+qQz4=",
+        "lastModified": 1747648126,
+        "narHash": "sha256-bGXS8QyfTY5784qkyXA+/E0ZB+3AOWpo25uckLFQtkk=",
         "owner": "lbeierlieb",
         "repo": "smartvmi",
-        "rev": "30f3c7e895556c547b864ca271646b2c767621e9",
+        "rev": "7467697abb0f685613cd7351a5b14b7e2f700ba7",
         "type": "github"
       },
       "original": {
         "owner": "lbeierlieb",
         "repo": "smartvmi",
-        "rev": "30f3c7e895556c547b864ca271646b2c767621e9",
+        "rev": "7467697abb0f685613cd7351a5b14b7e2f700ba7",
         "type": "github"
       }
     }
