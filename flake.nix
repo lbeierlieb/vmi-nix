@@ -18,7 +18,7 @@
       flake = false;
     };
     smartvmi = {
-      url = "github:lbeierlieb/smartvmi?rev=7467697abb0f685613cd7351a5b14b7e2f700ba7";
+      url = "github:GDATASoftwareAg/smartvmi";
       flake = false;
     };
   };
