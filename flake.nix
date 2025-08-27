@@ -17,8 +17,12 @@
       url = "github:GDATASoftwareAG/libvmi?rev=224b204db82f8648bdd475f2b8a48aa4de143c97";
       flake = false;
     };
-    smartvmi = {
-      url = "github:GDATASoftwareAg/smartvmi";
+    smartvmi-xen-emul-insn = {
+      url = "github:lbeierlieb/smartvmi?ref=xen-emul-insn";
+      flake = false;
+    };
+    smartvmi-xen-repair = {
+      url = "github:lbeierlieb/smartvmi?ref=xen-repair";
       flake = false;
     };
   };
@@ -50,25 +54,32 @@
           formatter = pkgs.nixfmt-rfc-style;
           packages =
             let
-              vmicore = pkgs.callPackage ./smartvmi/build_vmicore.nix {
-                inherit bext-di;
-                craneLib = inputs.crane.mkLib pkgs;
-                libvmi = libvmi-gdata;
-                smartvmi-source = inputs.smartvmi;
-              };
-              plugins = import ./smartvmi/build_plugins.nix {
-                inherit pkgs yara-cmake;
-                smartvmi-source = inputs.smartvmi;
+              build_smartvmi = { source, name} : let
+                vmicore = pkgs.callPackage ./smartvmi/build_vmicore.nix {
+                  inherit bext-di;
+                  craneLib = inputs.crane.mkLib pkgs;
+                  libvmi = libvmi-gdata;
+                  smartvmi-source = source;
+                };
+                plugins = import ./smartvmi/build_plugins.nix {
+                  inherit pkgs yara-cmake;
+                  smartvmi-source = source;
+                };
+              in pkgs.symlinkJoin {
+                name = name;
+                paths = [ vmicore ] ++ builtins.attrValues plugins;
               };
             in
             {
-              default = pkgs.symlinkJoin {
-                name = "smartvmi";
-                paths = [ vmicore ] ++ builtins.attrValues plugins;
+              smartvmi-xen-emul-insn = build_smartvmi {
+                source = inputs.smartvmi-xen-emul-insn;
+                name = "smartvmi-xen-emul-insn";
               };
-              inherit vmicore;
-            }
-            // plugins;
+              smartvmi-xen-repair = build_smartvmi {
+                source = inputs.smartvmi-xen-repair;
+                name = "smartvmi-xen-repair";
+              };
+            };
         };
     };
 }

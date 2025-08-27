@@ -110,21 +110,40 @@
         "libvmi-gdata": "libvmi-gdata",
         "nixpkgs": "nixpkgs",
         "nixpkgs-24-05": "nixpkgs-24-05",
-        "smartvmi": "smartvmi"
+        "smartvmi-xen-emul-insn": "smartvmi-xen-emul-insn",
+        "smartvmi-xen-repair": "smartvmi-xen-repair"
       }
     },
-    "smartvmi": {
+    "smartvmi-xen-emul-insn": {
       "flake": false,
       "locked": {
-        "lastModified": 1748862580,
-        "narHash": "sha256-4q1NIOrniioS14Otr4EsX/SjoGZjYLOVL7BGlNB1E9k=",
-        "owner": "GDATASoftwareAg",
+        "lastModified": 1756231560,
+        "narHash": "sha256-8CrBTXFiNOhqp0CHKQ3P1wU23DcUAJtZG+A2oIYkR8Q=",
+        "owner": "lbeierlieb",
         "repo": "smartvmi",
-        "rev": "9c1e79f870c4562350a5a29f0f07061dd12a7626",
+        "rev": "1dec7af2706354aa78ffe0212324f58a1ef87f03",
         "type": "github"
       },
       "original": {
-        "owner": "GDATASoftwareAg",
+        "owner": "lbeierlieb",
+        "ref": "xen-emul-insn",
+        "repo": "smartvmi",
+        "type": "github"
+      }
+    },
+    "smartvmi-xen-repair": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756292011,
+        "narHash": "sha256-pDGaKhaoXqwALZF0GJn59/6fxZZEH7w/Nh5QZDoiEIQ=",
+        "owner": "lbeierlieb",
+        "repo": "smartvmi",
+        "rev": "c848275674ad19ad7df6fe972852ce2af5db4746",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lbeierlieb",
+        "ref": "xen-repair",
         "repo": "smartvmi",
         "type": "github"
       }
