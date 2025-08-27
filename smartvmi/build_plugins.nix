@@ -9,4 +9,8 @@
     inherit smartvmi-source;
     additionalDeps = [ yara-cmake ];
   };
+  template = pkgs.callPackage ./build_plugin.nix {
+    name = "template";
+    inherit smartvmi-source;
+  };
 }
